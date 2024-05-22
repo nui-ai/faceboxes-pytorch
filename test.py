@@ -39,7 +39,7 @@ def parse_args():
     )
     parser.add_argument(
         '--pre-nms-top-k',
-        default=300,
+        default=5000,
         type=int,
         help='Number of top bounding boxes to consider for NMS.'
     )
@@ -146,7 +146,7 @@ def main(params):
                     ymin += 0.2 * (ymax - ymin + 1)
                     fw.write(f'{image_name} {score:.3f} {xmin:.1f} {ymin:.1f} {xmax:.1f} {ymax:.1f}\n')
 
-            print(f'Processing: {idx+1}/{num_images}')
+            print(f'Processing: {idx+1}/{num_images} | {params.save_dir}/{params.dataset}/{image_name}.jpg')
 
             # Show image
             if params.show_image:
@@ -157,7 +157,7 @@ def main(params):
                     text = f"{score:.4f}"
                     xmin, ymin, xmax, ymax = map(int, [xmin, ymin, xmax, ymax])
                     cv2.rectangle(image_raw, (xmin, ymin), (xmax, ymax), (0, 0, 255), 2)
-                    cv2.putText(image_raw, text, (b[0], b[1] + 12), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255))
+                    cv2.putText(image_raw, text, (xmin, ymin + 12), cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255))
 
                 # cv2.imshow('res', image_raw)
                 # cv2.waitKey(0)
@@ -167,3 +167,4 @@ def main(params):
 if __name__ == '__main__':
     args = parse_args()
     main(params=args)
+    
