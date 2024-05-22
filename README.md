@@ -5,7 +5,8 @@ https://arxiv.org/abs/1708.05234
 FaceBoxes is a high-performance face detection model. This repository provides the code for performing face detection using the FaceBoxes model.
 
 <div align="center">
-    <img src="assets/image_det.jpg" height="500px">
+    <!-- <img src="assets/image1_res.jpg" height="500px"> -->
+    <img src="assets/image2_res.jpg" height="500px" alt="AI generated image">
 </div>
 
 ## Table of Contents
