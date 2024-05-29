@@ -1,5 +1,7 @@
 # FaceBoxes: A CPU Real-time Face Detector with High Accuracy
 
+![Downloads](https://img.shields.io/github/downloads/yakhyo/faceboxes-pytorch/total)
+
 https://arxiv.org/abs/1708.05234
 
 FaceBoxes is a high-performance face detection model. This repository provides the code for performing face detection using the FaceBoxes model.
