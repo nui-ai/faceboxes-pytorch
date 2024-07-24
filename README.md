@@ -1,6 +1,6 @@
 # FaceBoxes: A CPU Real-time Face Detector with High Accuracy
 
-![Downloads](https://img.shields.io/github/downloads/yakhyo/faceboxes-pytorch/total)
+![Downloads](https://img.shields.io/github/downloads/yakhyo/faceboxes-pytorch/total) [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/yakhyo/faceboxes-pytorch)
 
 https://arxiv.org/abs/1708.05234
 
