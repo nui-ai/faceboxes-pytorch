@@ -14,6 +14,8 @@ from models.faceboxes import FaceBoxes
 from utils.prior_box import PriorBox
 from utils.box_utils import decode, nms
 
+import time
+
 
 class FaceBoxesInference:
     def __init__(
@@ -46,10 +48,13 @@ class FaceBoxesInference:
         return loc, conf
 
     def process_image(self, image_arr: np.ndarray) -> np.ndarray:
+        
+        start = time.time()
+        
         im_height, im_width = image_arr.shape[1:3]
         scale = torch.tensor([im_width, im_height, im_width, im_height], device=self.device).float()
 
-        image_tensor = torch.from_numpy(image_arr).unsqueeze(0).to(self.device)  # Add batch and move to device
+        image_tensor = torch.tensor(image_arr).unsqueeze(0).to(self.device)  # Add batch and move to device
         loc, conf = self.detect_faces(image_tensor)
 
         priorbox = PriorBox(cfg, image_size=(im_height, im_width))
@@ -77,6 +82,8 @@ class FaceBoxesInference:
 
         # Keep top-K after NMS
         dets = dets[:self.post_nms_top_k]
+
+        print(f'Inference time: {time.time() - start} seconds')
 
         return dets
 
